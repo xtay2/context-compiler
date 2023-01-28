@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="f3fa56b6-c7d5-4b02-a1db-a6c0d3655e56" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/context-compiler.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/errors/CompilerError.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/errors/ErrorHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/errors/lexing/ErroneousCodeError.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/errors/lexing/WrongOrMissingCodeError.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/errors/startup/FileReadingError.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/errors/startup/IllegalArgumentError.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/main/Compiler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/main/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/rules/Keywords.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/rules/Rules.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/tokens/ProgramToken.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/tokens/definitions/NativeDeclaration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/tokens/imports/ImportPath.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/module-info.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../helper/src/helper/io/PathHelper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../recursive-descent-parser/recursive-descent-parser.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../recursive-descent-parser/src/app/rules/abstractions/Terminal.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../recursive-descent-parser/src/app/tokenization/ErrorContext.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../recursive-descent-parser/src/app/tokenization/tokens/ErroneousTerminal.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../recursive-descent-parser/src/app/tokenization/tokens/TerminalToken.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../recursive-descent-parser/src/app/tokenization/tokens/TokenSection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../helper/src/helper/io/FileHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../helper/src/helper/io/FileHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../helper/src/helper/util/ArrayHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../helper/src/helper/util/ArrayHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../helper/src/helper/util/CollectionHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../helper/src/helper/util/CollectionHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../helper/src/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/../helper/src/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../recursive-descent-parser/src/app/rules/abstractions/MultiNonTerminal.java" beforeDir="false" afterPath="$PROJECT_DIR$/../recursive-descent-parser/src/app/rules/abstractions/MultiNonTerminal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../recursive-descent-parser/src/app/rules/abstractions/Rule.java" beforeDir="false" afterPath="$PROJECT_DIR$/../recursive-descent-parser/src/app/rules/abstractions/Rule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../recursive-descent-parser/src/app/rules/abstractions/SingleNonTerminal.java" beforeDir="false" afterPath="$PROJECT_DIR$/../recursive-descent-parser/src/app/rules/abstractions/SingleNonTerminal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../recursive-descent-parser/src/app/rules/nonterminals/AlterationRule.java" beforeDir="false" afterPath="$PROJECT_DIR$/../recursive-descent-parser/src/app/rules/nonterminals/AlterationRule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../recursive-descent-parser/src/app/rules/nonterminals/LazyRule.java" beforeDir="false" afterPath="$PROJECT_DIR$/../recursive-descent-parser/src/app/rules/nonterminals/LazyRule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../recursive-descent-parser/src/app/rules/nonterminals/MultipleRule.java" beforeDir="false" afterPath="$PROJECT_DIR$/../recursive-descent-parser/src/app/rules/nonterminals/MultipleRule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../recursive-descent-parser/src/app/rules/nonterminals/OptionalRule.java" beforeDir="false" afterPath="$PROJECT_DIR$/../recursive-descent-parser/src/app/rules/nonterminals/OptionalRule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../recursive-descent-parser/src/app/rules/nonterminals/SequenceRule.java" beforeDir="false" afterPath="$PROJECT_DIR$/../recursive-descent-parser/src/app/rules/nonterminals/SequenceRule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../recursive-descent-parser/src/app/rules/terminals/LiteralRule.java" beforeDir="false" afterPath="$PROJECT_DIR$/../recursive-descent-parser/src/app/rules/terminals/LiteralRule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../recursive-descent-parser/src/app/rules/terminals/WordRule.java" beforeDir="false" afterPath="$PROJECT_DIR$/../recursive-descent-parser/src/app/rules/terminals/WordRule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../recursive-descent-parser/src/app/tokenization/MatchData.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../recursive-descent-parser/src/app/tokenization/TokenFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/../recursive-descent-parser/src/app/tokenization/TokenFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../recursive-descent-parser/src/app/tokenization/tokens/LiteralToken.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../recursive-descent-parser/src/app/tokenization/tokens/Token.java" beforeDir="false" afterPath="$PROJECT_DIR$/../recursive-descent-parser/src/app/tokenization/tokens/Token.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../recursive-descent-parser/src/app/tokenization/tokens/WordToken.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../recursive-descent-parser/src/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/../recursive-descent-parser/src/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../recursive-descent-parser/src/tests/rules/ComplexRuleTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/../recursive-descent-parser/src/tests/rules/ComplexRuleTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../recursive-descent-parser/src/tests/rules/nonterminals/AlterationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../recursive-descent-parser/src/tests/rules/nonterminals/AlterationTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../recursive-descent-parser/src/tests/rules/nonterminals/LazyTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../recursive-descent-parser/src/tests/rules/nonterminals/LazyTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../recursive-descent-parser/src/tests/rules/nonterminals/MultipleTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../recursive-descent-parser/src/tests/rules/nonterminals/MultipleTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../recursive-descent-parser/src/tests/rules/nonterminals/OptionalTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../recursive-descent-parser/src/tests/rules/nonterminals/OptionalTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../recursive-descent-parser/src/tests/rules/nonterminals/SequenceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../recursive-descent-parser/src/tests/rules/nonterminals/SequenceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../recursive-descent-parser/src/tests/rules/terminals/LiteralTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../recursive-descent-parser/src/tests/rules/terminals/LiteralTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../recursive-descent-parser/src/tests/rules/terminals/WordTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../recursive-descent-parser/src/tests/rules/terminals/WordTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../recursive-descent-parser/src/tests/tokens/TestTokens.java" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeInsightWorkspaceSettings">
+    <option name="optimizeImportsOnTheFly" value="true" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="module-info" />
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$/../recursive-descent-parser" value="master" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../recursive-descent-parser" />
+    <option name="ROOT_SYNC" value="DONT_SYNC" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2Ks1Hsxo3FelBLhqvFkQzI0MxAx" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;19&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/x-tay/Documents/Programmierung/Java/recursive-descent-parser&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.import&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="app.tokenization" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.Main">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="app.main.Main" />
+      <module name="context-compiler" />
+      <option name="PROGRAM_PARAMETERS" value="&quot;C:\Users\x-tay\Documents\Programmierung\Context\TestProject&quot;" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="app.main.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ComplexRuleTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="recursive-descent-parser" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="tests.rules.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="tests.rules" />
+      <option name="MAIN_CLASS_NAME" value="tests.rules.ComplexRuleTests" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ComplexRuleTests.testListFails" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="recursive-descent-parser" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="tests.rules.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="tests.rules" />
+      <option name="MAIN_CLASS_NAME" value="tests.rules.ComplexRuleTests" />
+      <option name="METHOD_NAME" value="testListFails" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ComplexRuleTests.testListMatches" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="recursive-descent-parser" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="tests.rules.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="tests.rules" />
+      <option name="MAIN_CLASS_NAME" value="tests.rules.ComplexRuleTests" />
+      <option name="METHOD_NAME" value="testListMatches" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="tests.rules in recursive-descent-parser" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="recursive-descent-parser" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="tests.rules.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="tests.rules" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.Main" />
+      <item itemvalue="JUnit.ComplexRuleTests" />
+      <item itemvalue="JUnit.ComplexRuleTests.testListFails" />
+      <item itemvalue="JUnit.ComplexRuleTests.testListMatches" />
+      <item itemvalue="JUnit.tests.rules in recursive-descent-parser" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+        <item itemvalue="JUnit.ComplexRuleTests.testListMatches" />
+        <item itemvalue="JUnit.ComplexRuleTests" />
+        <item itemvalue="JUnit.tests.rules in recursive-descent-parser" />
+        <item itemvalue="JUnit.ComplexRuleTests.testListFails" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f3fa56b6-c7d5-4b02-a1db-a6c0d3655e56" name="Changes" comment="" />
+      <created>1674748393285</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1674748393285</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
