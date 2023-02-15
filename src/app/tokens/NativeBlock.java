@@ -3,7 +3,7 @@ package app.tokens;
 import app.compiler.Constants;
 import app.errors.ParsingError;
 import parser.app.rules.abstractions.Rule;
-import parser.app.rules.nonterminals.Sequence;
+import parser.app.rules.nonterminals.multi.Ordered;
 import parser.app.rules.terminals.Literal;
 import parser.app.rules.terminals.Section;
 import parser.app.tokens.Token;
@@ -15,7 +15,7 @@ import static app.compiler.Constants.OPEN_BLOCK;
 
 public final class NativeBlock extends TokenArray {
 
-	public static final Rule NATIVE_BLOCK = new Sequence(
+	public static final Rule NATIVE_BLOCK = new Ordered(
 			NativeBlock::new,
 			new Literal("native"),
 			new Section(OPEN_BLOCK, CLOSE_BLOCK)
