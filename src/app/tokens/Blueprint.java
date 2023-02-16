@@ -1,7 +1,7 @@
 package app.tokens;
 
 import parser.app.rules.abstractions.Rule;
-import parser.app.rules.nonterminals.Multiple;
+import parser.app.rules.nonterminals.extensions.Multiple;
 import parser.app.rules.nonterminals.multi.Ordered;
 import parser.app.tokens.Token;
 import parser.app.tokens.collection.TokenArray;
@@ -10,7 +10,7 @@ import static app.tokens.NativeBlock.NATIVE_BLOCK;
 
 public final class Blueprint extends TokenArray {
 
-	static final Rule NATIVES = new Multiple(NATIVE_BLOCK);
+	static final Rule NATIVES = new Multiple(true, NATIVE_BLOCK);
 
 	public static final Rule BLUEPRINT = new Ordered(
 			Blueprint::new,
