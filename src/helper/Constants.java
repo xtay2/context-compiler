@@ -1,0 +1,46 @@
+package helper;
+
+import java.util.regex.Pattern;
+
+import static java.util.regex.Pattern.compile;
+
+public interface Constants {
+
+	// Symbols
+
+	char OPEN_BLOCK = '{',
+			CLOSE_BLOCK = '}',
+			DECLARATOR = ':';
+
+	// Files
+
+	String FILE_EXT = ".con";
+
+	String SOURCE_DIR = "src",
+			COMPILED_DIR = "cmp",
+			STD_LIB_DIR = "std",
+			BINARY_DIR = "bin";
+
+	// Keywords
+
+	String MODULE_KEYWORD = "module",
+			ENUM_KEYWORD = "enum",
+			STRUCT_KEYWORD = "struct",
+			CLASS_KEYWORD = "class";
+
+	String IMPORT_KEYWORD = "import";
+
+
+	// Patterns
+
+	Pattern BLUEPRINT_NAME = compile("[A-Z][A-Za-z]{0,31}"),
+			FUNCTION_NAME = compile("[a-z]{1,32}"),
+			ATTRIBUTE_NAME = compile("[a-z]{1,32}");
+
+	Pattern SRC_PATH = compile(SOURCE_DIR + "(\\.[a-z]+(-[a-z])*)*\\." + BLUEPRINT_NAME),
+			STD_PATH = compile(STD_LIB_DIR + "(\\.[a-z]+(-[a-z])*)*\\." + BLUEPRINT_NAME);
+
+	// Misc
+
+	String PROGRAM_NAME = "Program.exe";
+}
