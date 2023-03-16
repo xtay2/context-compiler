@@ -4,6 +4,7 @@ import app.io.CompFileType;
 import app.io.FileManager;
 import app.io.ImportPath;
 import app.parts.tokens.blueprints.Blueprint;
+import app.parts.tokens.blueprints.SyntaxObject;
 import helper.annotations.DefaultFinal;
 
 import java.util.List;
@@ -27,18 +28,22 @@ public sealed interface ImportProvider permits Blueprint, AttributeProvider, Fun
 
 	@DefaultFinal
 	default void generateImportHeader() {
-		var importPath = getImportPath();
+		var myFilePath = getImportPath();
 		var content = getImports()
 				.stream()
 				.map(imp -> switch (imp) {
-					case FunctionProvider ignored -> include(importPath, CompFileType.FUNC_HEADER);
-					case AttributeProvider ignored -> include(importPath, CompFileType.OBJECT_HEADER);
+					case FunctionProvider ignored -> include(myFilePath, CompFileType.FUNC_HEADER);
+					case AttributeProvider ignored -> include(myFilePath, CompFileType.OBJECT_HEADER);
 					default -> throw new AssertionError("Unexpected value: " + imp);
 				})
 				.collect(Collectors.joining("\n"));
-		FileManager.writeCompiled(CompFileType.IMPORT_HEADER, importPath, content);
+		FileManager.writeCompiled(CompFileType.IMPORT_HEADER, myFilePath, content);
 	}
 
+	/**
+	 * As {@code this} is always a {@link SyntaxObject},
+	 * this method can safely return {@link SyntaxObject#myFilePath}.
+	 */
 	ImportPath getImportPath();
 
 	List<Blueprint> getImports();

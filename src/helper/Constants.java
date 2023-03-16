@@ -23,19 +23,14 @@ public interface Constants {
 
 	// Keywords
 
-	String MODULE_KEYWORD = "module",
-			ENUM_KEYWORD = "enum",
-			STRUCT_KEYWORD = "struct",
-			CLASS_KEYWORD = "class";
-
 	String IMPORT_KEYWORD = "import";
 
 
 	// Patterns
 
-	Pattern BLUEPRINT_NAME = compile("[A-Z][A-Za-z]{0,31}"),
-			FUNCTION_NAME = compile("[a-z]{1,32}"),
-			ATTRIBUTE_NAME = compile("[a-z]{1,32}");
+	Pattern BLUEPRINT_NAME = compile("\\b[A-Z][A-Za-z]{0,31}\\b"),
+			FUNCTION_NAME = compile("\\b[a-z]{1,32}\\b"),
+			VAR_NAME = compile("\\b[a-z]{1,32}\\b");
 
 	Pattern SRC_PATH = compile(SOURCE_DIR + "(\\.[a-z]+(-[a-z])*)*\\." + BLUEPRINT_NAME),
 			STD_PATH = compile(STD_LIB_DIR + "(\\.[a-z]+(-[a-z])*)*\\." + BLUEPRINT_NAME);

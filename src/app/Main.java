@@ -1,10 +1,11 @@
-package app.compiler;
+package app;
 
 import app.errors.AbstractCompilerError;
 import app.errors.GeneralError;
+import app.errors.ImportError;
 import app.io.FileManager;
 import app.io.ImportPath;
-import app.parts.rules.blueprints.BlueprintParser;
+import app.parts.rules.FileParser;
 import app.parts.tokens.blueprints.Blueprint;
 import helper.Constants;
 import helper.io.ANSI;
@@ -28,12 +29,14 @@ public class Main {
 		try {
 			System.out.println("--- " + ANSI.color(ORANGE, "[Parsing Sources]") + " ---");
 			FileManager.setProjectPath(args[0]);
-			blueprints = FileManager.getSourceFiles()
-			                        .collect(Collectors.toMap(
-					                                 sf -> sf.path,
-					                                 sf -> BlueprintParser.parse(sf.path, sf.content)
-			                                 )
-			                        );
+			blueprints = FileManager
+					.getSourceFiles()
+					.collect(
+							Collectors.toMap(
+									sf -> sf.path,
+									sf -> FileParser.parse(sf.path, sf.content)
+							)
+					);
 			if (blueprints.isEmpty())
 				throw new GeneralError("No source files found.\n" + FileManager.getSourcePath() + "---" + Constants.FILE_EXT);
 			FileHelper.delete(FileManager.getCompilePath());
@@ -47,9 +50,10 @@ public class Main {
 		}
 	}
 
-	public static Blueprint getBlueprint(ImportPath importPath) {
-		var blueprint = blueprints.get(importPath);
-		assert blueprint != null;
+	public static Blueprint getBlueprint(ImportPath myFilePath, ImportPath targetPath) {
+		var blueprint = blueprints.get(targetPath);
+		if (blueprint == null)
+			throw new ImportError(myFilePath, targetPath.path);
 		return blueprint;
 	}
 

@@ -1,8 +1,15 @@
 package app.errors;
 
+import app.io.ImportPath;
+
 public class AbstractCompilerError extends Error {
-	public AbstractCompilerError(String message) {
+
+	AbstractCompilerError(String message) {
 		super(message);
+	}
+
+	AbstractCompilerError(ImportPath myFilePath, String message) {
+		super("[" + myFilePath + "]: " + message);
 	}
 
 }

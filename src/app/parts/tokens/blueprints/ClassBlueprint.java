@@ -6,31 +6,29 @@ import app.parts.tokens.blueprints.content.Function;
 import app.parts.tokens.blueprints.includes.AttributeProvider;
 import app.parts.tokens.blueprints.includes.FunctionProvider;
 
-import java.util.List;
-
 public class ClassBlueprint extends Blueprint implements AttributeProvider, FunctionProvider {
 
-	private final List<Attribute> attributes;
-	private final List<Function> functions;
+	private final Attribute[] attributes;
+	private final Function[] functions;
 
 	public ClassBlueprint(
-			ImportPath importPath,
-			List<ImportPath> imports,
-			List<Attribute> attributes,
-			List<Function> functions
+			ImportPath myFilePath,
+			ImportPath[] imports,
+			Attribute[] attributes,
+			Function[] functions
 	) {
-		super(importPath, imports);
+		super(myFilePath, imports);
 		this.attributes = attributes;
 		this.functions = functions;
 	}
 
 	@Override
-	public List<Attribute> getAttributes() {
+	public Attribute[] getAttributes() {
 		return attributes;
 	}
 
 	@Override
-	public List<Function> getFunctions() {
+	public Function[] getFunctions() {
 		return functions;
 	}
 }

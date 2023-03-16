@@ -1,11 +1,15 @@
 package app.parts.tokens.blueprints.content;
 
-public abstract class Attribute {
+import app.io.ImportPath;
+import app.parts.tokens.blueprints.SyntaxObject;
+
+public class Attribute extends SyntaxObject {
 
 	public final Datatype type;
 	public final String name;
 
-	public Attribute(Datatype type, String name) {
+	public Attribute(ImportPath myFilePath, Datatype type, String name) {
+		super(myFilePath);
 		this.type = type;
 		this.name = name;
 	}

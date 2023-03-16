@@ -47,10 +47,10 @@ public class FileManager {
 		return Path.of(projectPath, COMPILED_DIR);
 	}
 
-	public static Path getCompilePath(CompFileType compFileType, ImportPath importPath) {
+	public static Path getCompilePath(CompFileType compFileType, ImportPath target) {
 		return Path.of(projectPath,
 		               COMPILED_DIR,
-		               importPath.compilePath(compFileType)
+		               target.compilePath(compFileType)
 		);
 	}
 
@@ -84,12 +84,12 @@ public class FileManager {
 	 * <p>
 	 * (Creates the file if it does not exist.)
 	 */
-	public static void writeCompiled(CompFileType compFileType, ImportPath importPath, String content) {
-		var compiledPath = getCompilePath(compFileType, importPath);
+	public static void writeCompiled(CompFileType compFileType, ImportPath target, String content) {
+		var compiledPath = getCompilePath(compFileType, target);
 		// Surround with guards if it is a header file
 		if (compFileType.isHeader()) {
-			content = "#ifndef " + importPath.fileName().toUpperCase() + "_H\n" +
-					"#define " + importPath.fileName().toUpperCase() + "_H\n" +
+			content = "#ifndef " + target.fileName().toUpperCase() + "_H\n" +
+					"#define " + target.fileName().toUpperCase() + "_H\n" +
 					"\n" +
 					content +
 					"\n" +

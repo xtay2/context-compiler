@@ -1,9 +1,12 @@
 package app.parts.tokens.blueprints.content;
 
+import app.io.ImportPath;
+import app.parts.tokens.blueprints.SyntaxObject;
+
 import java.util.Arrays;
 import java.util.stream.Collectors;
 
-public class Function {
+public class Function extends SyntaxObject {
 
 	private final String name;
 
@@ -11,14 +14,15 @@ public class Function {
 
 	private final Datatype returnType;
 
-	public Function(String name, Parameter[] params, Datatype returnType) {
+	public Function(ImportPath myFilePath, String name, Parameter[] params, Datatype returnType) {
+		super(myFilePath);
 		this.name = name;
 		this.params = params;
 		this.returnType = returnType;
 	}
 
 	private String c_funcName() {
-		return null; // TODO: Implement me!
+		return myFilePath.path.replace('.', '_') + "$" + name;
 	}
 
 	private String c_params() {
@@ -36,7 +40,7 @@ public class Function {
 	}
 
 	private String c_funcBody() {
-		return null; // TODO: Implement me!
+		return "\n\n"; // TODO: Implement me!
 	}
 
 }

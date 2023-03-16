@@ -5,88 +5,84 @@ import app.io.ImportPath;
 import app.parts.rules.blueprints.content.BlueprintDeclParser;
 import app.parts.rules.blueprints.includes.AttributeParser;
 import app.parts.rules.blueprints.includes.FunctionParser;
-import app.parts.rules.blueprints.includes.ImportParser;
 import app.parts.tokens.blueprints.*;
 import app.parts.tokens.blueprints.content.Attribute;
 import app.parts.tokens.blueprints.content.BlueprintDecl;
 import app.parts.tokens.blueprints.content.Function;
 import parser.app.rules.abstractions.Rule;
-import parser.app.rules.nonterminals.extensions.Alteration;
 import parser.app.rules.nonterminals.multi.Ordered;
-import parser.app.rules.terminals.Literal;
 import parser.app.tokens.Token;
 import parser.app.tokens.collection.TokenArray;
 import parser.app.tokens.collection.TokenList;
 
-import java.util.List;
-
-import static app.parts.rules.blueprints.includes.AttributeParser.ATTRIBUTES;
-import static app.parts.rules.blueprints.includes.FunctionParser.FUNCTIONS;
-import static helper.Constants.*;
+import static app.parts.rules.blueprints.content.BlueprintDeclParser.blueprintDecl;
+import static app.parts.rules.blueprints.includes.AttributeParser.attributes;
+import static app.parts.rules.blueprints.includes.FunctionParser.functions;
 
 /**
  * A generic parser that can expect any blueprint.
  */
 public final class BlueprintParser extends TokenArray {
 
-	private static final Rule BLUEPRINT_DECLARATION = new Ordered(
-			new Alteration(false, CLASS_KEYWORD, ENUM_KEYWORD, MODULE_KEYWORD, STRUCT_KEYWORD),
-			new Literal(DECLARATOR)
-	);
-
-	private static Rule blueprint(ImportPath importPath) {
+	private static Rule blueprint(ImportPath myFilePath, ImportPath[] targetImports) {
 		return new Ordered(
-				(rule, tokens) -> new BlueprintParser(importPath, tokens),
-				ImportParser.imports(importPath),
-				BLUEPRINT_DECLARATION,
-				ATTRIBUTES,
-				FUNCTIONS
+				tokens -> new BlueprintParser(myFilePath, targetImports, tokens),
+				blueprintDecl(myFilePath),
+				attributes(myFilePath, targetImports),
+				functions(myFilePath, targetImports)
 		);
 	}
 
-	private final ImportPath importPath;
-	private final List<ImportPath> imports;
+	// ------------------ Constructor ---------------------------------------------------------------
 
-	private final BlueprintDecl declaration;
-	private final List<Attribute> attributes;
-	private final List<Function> functions;
+	private final Blueprint blueprint;
 
-	private BlueprintParser(ImportPath importPath, Token... tokens) {
+	private BlueprintParser(ImportPath myFilePath, ImportPath[] targetImports, Token[] tokens) {
 		super(tokens);
-		this.importPath = importPath;
-		assert tokens.length == 4;
-		// Imports
-		if (tokens[0] instanceof TokenList importList)
-			this.imports = importList.stream().map(t -> ((ImportParser) t).importPath).toList();
-		else throw new AssertionError("Expected a list of imports.");
-		// Blueprint type
-		if (tokens[1] instanceof BlueprintDeclParser bdp)
-			this.declaration = bdp.declaration;
-		else throw new AssertionError("Expected a blueprint declaration.");
-		// Attributes
-		if (tokens[2] instanceof TokenList attributeList)
-			this.attributes = attributeList.stream().map(t -> ((AttributeParser) t).attribute).toList();
-		else throw new AssertionError("Expected a list of attributes.");
-		// Functions
-		if (tokens[3] instanceof TokenList functionList)
-			this.functions = functionList.stream().map(t -> ((FunctionParser) t).function).toList();
-		else throw new AssertionError("Expected a list of functions.");
-	}
-
-	public static Blueprint parse(ImportPath importPath, String input) {
-		var token = blueprint(importPath).tokenize(input);
-		if (token instanceof BlueprintParser bpp)
-			return bpp.parse();
-		throw new ParsingError(importPath, "Couldn't parse blueprint", token);
-	}
-
-	private Blueprint parse() {
-		return switch (declaration.blueprintType) {
-			case CLASS_KEYWORD -> new ClassBlueprint(importPath, imports, attributes, functions);
-			case ENUM_KEYWORD -> new EnumBlueprint(importPath, imports, attributes, functions);
-			case MODULE_KEYWORD -> new ModuleBlueprint(importPath, imports, functions);
-			case STRUCT_KEYWORD -> new StructBlueprint(importPath, imports, attributes);
-			default -> throw new IllegalStateException("Unexpected value: " + declaration.blueprintType);
+		assert tokens.length == 3;
+		// Parts
+		var declaration = extractDeclaration(myFilePath, tokens);
+		var attributes = extractAttributes(myFilePath, tokens);
+		var functions = extractFunctions(myFilePath, tokens);
+		// Initialize
+		blueprint = switch (declaration.type) {
+			case MODULE -> new ModuleBlueprint(myFilePath, targetImports, functions);
+			case ENUM -> new EnumBlueprint(myFilePath, targetImports, attributes, functions);
+			case STRUCT -> new StructBlueprint(myFilePath, targetImports, attributes);
+			case CLASS -> new ClassBlueprint(myFilePath, targetImports, attributes, functions);
 		};
 	}
+
+	// ------------------ Extractors / Checks --------------------------------------------------------
+
+	private BlueprintDecl extractDeclaration(ImportPath myFilePath, Token[] tokens) {
+		if (tokens[0].hasError())
+			throw new ParsingError(myFilePath, "Error in blueprint-declaration: ", tokens[0]);
+		return ((BlueprintDeclParser) tokens[0]).declaration;
+	}
+
+	private Attribute[] extractAttributes(ImportPath myFilePath, Token[] tokens) {
+		if (tokens[1].hasError())
+			throw new ParsingError(myFilePath, "Error in attributes: ", tokens[1]);
+		return ((TokenList) tokens[1])
+				.stream()
+				.map((token) -> ((AttributeParser) token).attribute)
+				.toArray(Attribute[]::new);
+	}
+
+	private Function[] extractFunctions(ImportPath myFilePath, Token[] tokens) {
+		if (tokens[2].hasError())
+			throw new ParsingError(myFilePath, "Error in functions: ", tokens[2]);
+		return ((TokenList) tokens[2])
+				.stream()
+				.map((token) -> ((FunctionParser) token).function)
+				.toArray(Function[]::new);
+	}
+
+	// ------------------ Static Methods ------------------------------------------------------------
+
+	public static Blueprint parse(ImportPath myFilePath, ImportPath[] imports, String input) {
+		return ((BlueprintParser) blueprint(myFilePath, imports).tokenize(input)).blueprint;
+	}
+
 }

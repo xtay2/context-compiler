@@ -2,7 +2,7 @@ package app.parts.tokens.blueprints.content;
 
 public class BlueprintDecl {
 
-	public final String blueprintType;
+	public final BlueprintType type;
 
-	public BlueprintDecl(String blueprintType) {this.blueprintType = blueprintType;}
+	public BlueprintDecl(BlueprintType type) {this.type = type;}
 }

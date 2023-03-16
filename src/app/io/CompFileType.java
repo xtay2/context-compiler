@@ -43,7 +43,7 @@ public enum CompFileType {
 		};
 	}
 
-	public static String include(ImportPath importPath, CompFileType objectHeader) {
-		return "#include \"" + importPath.fileName() + "_" + objectHeader.suffix() + objectHeader.fileExt() + "\"\n";
+	public static String include(ImportPath target, CompFileType objectHeader) {
+		return "#include \"" + target.fileName() + "_" + objectHeader.suffix() + objectHeader.fileExt() + "\"\n";
 	}
 }

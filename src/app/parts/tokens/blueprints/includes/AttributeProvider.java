@@ -6,24 +6,26 @@ import app.parts.tokens.blueprints.content.Attribute;
 import app.parts.tokens.blueprints.content.Datatype;
 import helper.annotations.DefaultFinal;
 
-import java.util.List;
-
 import static app.io.CompFileType.include;
 
 public non-sealed interface AttributeProvider extends ImportProvider {
 
 	@DefaultFinal
 	default void generateObjectHeader() {
-		var importPath = getImportPath();
-		include(importPath, CompFileType.IMPORT_HEADER);
-		FileManager.writeCompiled(CompFileType.OBJECT_HEADER, importPath, c_typedefStruct());
+		var myFilePath = getImportPath();
+		include(myFilePath, CompFileType.IMPORT_HEADER);
+		FileManager.writeCompiled(CompFileType.OBJECT_HEADER, myFilePath, c_typedefStruct());
 	}
 
 	@DefaultFinal
 	default String c_typedefStruct() {
-		StringBuilder sb = new StringBuilder()
+		var structName = new Datatype(
+				getImportPath(),
+				getImportPath()
+		).c_structName();
+		var sb = new StringBuilder()
 				.append("typedef struct ")
-				.append(asDatatype().c_signature())
+				.append(structName)
 				.append(" {\n");
 		for (var attribute : getAttributes()) {
 			sb.append("\t")
@@ -33,16 +35,11 @@ public non-sealed interface AttributeProvider extends ImportProvider {
 			  .append(";\n");
 		}
 		return sb.append("} ")
+		         .append(structName)
 		         .append(";\n")
 		         .toString();
 	}
 
-	/** Returns this as a {@link Datatype} that can get referenced by other blueprints. */
-	@DefaultFinal
-	default Datatype asDatatype() {
-		return new Datatype(getImportPath());
-	}
-
-	List<Attribute> getAttributes();
+	Attribute[] getAttributes();
 
 }

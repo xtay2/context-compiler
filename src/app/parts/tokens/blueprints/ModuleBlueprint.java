@@ -4,23 +4,21 @@ import app.io.ImportPath;
 import app.parts.tokens.blueprints.content.Function;
 import app.parts.tokens.blueprints.includes.FunctionProvider;
 
-import java.util.List;
-
 public class ModuleBlueprint extends Blueprint implements FunctionProvider {
 
-	private final List<Function> functions;
+	private final Function[] functions;
 
 	public ModuleBlueprint(
-			ImportPath importPath,
-			List<ImportPath> imports,
-			List<Function> functions
+			ImportPath myFilePath,
+			ImportPath[] imports,
+			Function[] functions
 	) {
-		super(importPath, imports);
+		super(myFilePath, imports);
 		this.functions = functions;
 	}
 
 	@Override
-	public List<Function> getFunctions() {
+	public Function[] getFunctions() {
 		return functions;
 	}
 }
